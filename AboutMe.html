@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <link rel="stylesheet" href="windows11-style.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--win11-text-primary);
+            background-color: var(--win11-bg);
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .about-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--win11-surface);
+            border-radius: var(--win11-radius-medium);
+            box-shadow: var(--win11-shadow-depth-8);
+            padding: 30px;
+        }
+        h1 {
+            color: var(--win11-accent);
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--win11-border-divider);
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: var(--win11-text-secondary);
+            font-size: 1.8em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        ul li::before {
+            content: '•';
+            color: var(--win11-accent);
+            position: absolute;
+            left: 0;
+        }
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 3px solid var(--win11-accent);
+        }
+    </style>
+</head>
+<body>
+    <div class="about-container">
+        <h1>About Me</h1>
+        <img src="https://via.placeholder.com/150" alt="Profile Picture" class="profile-image">
+        <p>Hello! I'm Shokri Eyad, passionate about software development, problem-solving, and creating innovative solutions. I enjoy learning new technologies and applying them to real-world challenges.</p>
+        
+        <h2>Skills</h2>
+        <ul>
+            <li>Programming Languages: Python, JavaScript, C++, Java</li>
+            <li>Web Technologies: HTML, CSS, React, Node.js</li>
+            <li>Databases: SQL, MongoDB</li>
+            <li>Tools & Platforms: Git, Docker, AWS</li>
+        </ul>
+
+        <h2>Experience</h2>
+        <p>During my studies, I've worked on various projects, including web applications, data analysis tools, and embedded systems. I've also gained experience in agile development methodologies and collaborative team environments.</p>
+
+        <h2>Education</h2>
+        <p>Currently pursuing a Bachelor's degree in Engineering at [Your University Name].</p>
+
+        <h2>Contact</h2>
+        <p>Feel free to connect with me on <a href="#" style="color: var(--win11-accent); text-decoration: none;">LinkedIn</a> or check out my <a href="#" style="color: var(--win11-accent); text-decoration: none;">GitHub</a> profile.</p>
+    </div>
+</body>
+</html>

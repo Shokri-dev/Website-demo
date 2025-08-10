@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PO Attainment and Evaluations</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: var(--color-background);
+            color: var(--color-text);
+            font-family: var(--font-family-base);
+            line-height: var(--line-height-normal);
+            padding: var(--space-16);
+            margin: 0;
+        }
+        h1 {
+            color: var(--color-primary);
+            text-align: center;
+            margin-bottom: var(--space-32);
+        }
+        .po-section {
+            background-color: var(--color-surface);
+            border-radius: var(--radius-base);
+            box-shadow: var(--shadow-md);
+            margin-bottom: var(--space-20);
+            padding: var(--space-24);
+        }
+        .po-section h2 {
+            color: var(--color-primary);
+            border-bottom: 2px solid var(--color-border);
+            padding-bottom: var(--space-10);
+            margin-bottom: var(--space-16);
+        }
+        .po-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        .po-section ul li {
+            background-color: var(--color-secondary);
+            margin-bottom: var(--space-10);
+            padding: var(--space-12) var(--space-16);
+            border-left: 4px solid var(--color-primary);
+            border-radius: var(--radius-sm);
+        }
+        .attainment-item {
+            border-left-color: var(--color-success) !important;
+        }
+        .evaluation-item {
+            border-left-color: var(--color-warning) !important;
+        }
+        .summary-text {
+            margin-top: var(--space-32);
+            padding-top: var(--space-20);
+            border-top: 1px solid var(--color-border);
+            font-style: italic;
+            color: var(--color-text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <h1>PO Attainment and Evaluations</h1>
+
+    <div class="po-nav">
+        <button class="po-nav-btn active" data-target="highlights">Attainment Highlights</button>
+        <button class="po-nav-btn" data-target="insights">Evaluation Insights</button>
+        <button class="po-nav-btn" data-target="summary">Summary</button>
+    </div>
+
+    <div id="highlights" class="po-content-section">
+        <div class="po-section">
+            <h2>Attainment Highlights <i class="fas fa-trophy" style="color: var(--color-success);"></i></h2>
+            <ul>
+                <li class="attainment-item"><strong>Problem Analysis and Solution Design:</strong> Consistently demonstrated strong analytical skills in breaking down complex engineering problems and designing innovative, effective solutions.</li>
+                <li class="attainment-item"><strong>Modern Tool Usage and Application:</strong> Proficiently utilized a wide range of contemporary engineering software and hardware tools for simulation, design, and data analysis, enhancing project efficiency and accuracy.</li>
+                <li class="attainment-item"><strong>Teamwork and Collaborative Skills:</strong> Actively participated in team-based projects, fostering a cooperative environment and contributing significantly to collective goals, often taking leadership roles when appropriate.</li>
+                <li class="attainment-item"><strong>Communication and Presentation:</strong> Effectively communicated technical information through written reports and oral presentations, adapting content for diverse audiences, from peers to non-technical stakeholders.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="insights" class="po-content-section hidden">
+        <div class="po-section">
+            <h2>Evaluation Insights <i class="fas fa-chart-line" style="color: var(--color-info);"></i></h2>
+            <ul>
+                <li class="evaluation-item"><strong>Critical Thinking and Innovation:</strong> Showed a strong capacity for critical evaluation of existing solutions and a creative approach to developing novel alternatives, though sometimes requiring more structured brainstorming.</li>
+                <li class="evaluation-item"><strong>Ethical and Professional Responsibility:</strong> Consistently upheld ethical standards in all academic and project work, demonstrating a clear understanding of professional responsibilities in engineering.</li>
+                <li class="evaluation-item"><strong>Lifelong Learning and Self-Improvement:</strong> Actively sought out new knowledge and skills, demonstrating a commitment to continuous professional development, particularly in emerging technologies.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="summary" class="po-content-section hidden">
+        <div class="analysis-summary">
+            <p>This evaluation confirms a high level of attainment across key Program Outcomes, reflecting a well-rounded engineering education and practical skill set. Continued focus on structured innovation and advanced technical specialization will further enhance professional capabilities.</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navButtons = document.querySelectorAll('.po-nav-btn');
+            const contentSections = document.querySelectorAll('.po-content-section');
+
+            navButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    navButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    contentSections.forEach(section => section.classList.add('hidden'));
+
+                    const targetId = button.dataset.target;
+                    document.getElementById(targetId).classList.remove('hidden');
+                });
+            });
+        });
+    </script>
+
+    <style>
+        .po-nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: var(--space-24);
+            flex-wrap: wrap;
+            gap: var(--space-8);
+        }
+        .po-nav-btn {
+            background-color: var(--color-surface);
+            color: var(--color-text);
+            border: 1px solid var(--color-border);
+            padding: var(--space-10) var(--space-16);
+            border-radius: var(--radius-base);
+            cursor: pointer;
+            font-size: var(--font-size-md);
+            transition: all var(--duration-normal) var(--ease-standard);
+        }
+        .po-nav-btn:hover {
+            background-color: var(--color-secondary-hover);
+            border-color: var(--color-primary);
+        }
+        .po-nav-btn.active {
+            background-color: var(--color-primary);
+            color: var(--color-btn-primary-text);
+            border-color: var(--color-primary);
+        }
+        .po-content-section.hidden {
+            display: none;
+        }
+    </style>
+</body>
+</html>

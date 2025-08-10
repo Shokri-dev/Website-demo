@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js" defer></script>
+</head>
+<body>
+
+    <!-- Loading Screen with Circuit Animation -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="circuit-loader">
+            <div class="circuit-board">
+                <div class="circuit-path path-1"></div>
+                <div class="circuit-path path-2"></div>
+                <div class="circuit-path path-3"></div>
+                <div class="circuit-node node-1"></div>
+                <div class="circuit-node node-2"></div>
+                <div class="circuit-node node-3"></div>
+                <div class="circuit-node node-4"></div>
+            </div>
+            <div class="loading-text">
+                <span>INITIALIZING</span>
+                <span class="loading-dots">
+                    <span>.</span>
+                    <span>.</span>
+                    <span>.</span>
+                </span>
+            </div>
+            <div class="loading-subtitle">Advanced Engineering Portfolio</div>
+        </div>
+    </div>
+
+    <!-- Floating Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-icon"><i class="fas fa-atom"></i></span>
+                <span class="logo-text">Engineering Excellence</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="#hero" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#plo-analysis" class="nav-link">PLO Analysis</a></li>
+                <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+                <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-toggle" id="navToggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Revolutionary Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-background">
+            <div class="dynamic-grid"></div>
+            <div class="floating-elements">
+                <div class="floating-icon"><i class="fas fa-microchip"></i></div>
+                <div class="floating-icon"><i class="fas fa-robot"></i></div>
+                <div class="floating-icon"><i class="fas fa-brain"></i></div>
+                <div class="floating-icon"><i class="fas fa-rocket"></i></div>
+                <div class="floating-icon"><i class="fas fa-cogs"></i></div>
+                <div class="floating-icon"><i class="fas fa-atom"></i></div>
+            </div>
+            <canvas id="particleCanvas" class="particle-canvas"></canvas>
+        </div>
+        <div class="hero-content">
+
+            <h1 class="hero-title">
+                <span class="hero-main" id="heroMain">Shokri Eyad</span>
+            </h1>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number" data-count="8">0</span>
+                    <span class="stat-label">Advanced Projects</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="12">0</span>
+                    <span class="stat-label">PLO Competencies</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="95">0</span>
+                    <span class="stat-label">Excellence Score</span>
+                </div>
+            </div>
+            <div class="hero-actions">
+                <button class="btn btn-primary btn-glow" id="exploreBtn">
+                    <span>Explore Innovation</span>
+                    <i class="fas fa-rocket"></i>
+                </button>
+                <button class="btn btn-outline btn-pulse" id="ploBtn">
+                    <span>PLO Analysis</span>
+                    <i class="fas fa-chart-radar"></i>
+                </button>
+            </div>
+
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-wheel"></div>
+            <span>Discover Excellence</span>
+        </div>
+    </section>
+
+    <!-- Interactive PLO Analysis Section -->
+    <section id="plo-analysis" class="plo-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Program Learning Outcomes Analysis</h2>
+                <p class="section-subtitle">Interactive Competency Assessment & Professional Development Roadmap</p>
+            </div>
+
+            <div class="plo-dashboard">
+                <div class="plo-chart-section">
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3>PLO Competency Radar</h3>
+                            <div class="chart-controls">
+                                <button class="chart-btn active" data-view="radar">Radar View</button>
+                                <button class="chart-btn" data-view="bar">Bar View</button>
+                            </div>
+                        </div>
+                        <div class="chart-wrapper" style="position: relative; height: 400px;">
+                            <canvas id="ploChart"></canvas>
+                        </div>
+                        <div class="chart-legend">
+                            <div class="legend-item">
+                                <span class="legend-color excellent"></span>
+                                <span>Excellent (≥0.8)</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color good"></span>
+                                <span>Good (0.6-0.79)</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color improvement"></span>
+                                <span>Needs Improvement (<0.6)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="plo-insights-section">
+                    <div class="insights-grid">
+                        <div class="insight-card strengths-card">
+                            <div class="card-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <h3>Key Strengths</h3>
+                            <ul class="strengths-list" id="strengthsList">
+                                <!-- Populated by JavaScript -->
+                            </ul>
+                            <div class="strength-score">
+                                <span class="score-value" id="strengthCount">7</span>
+                                <span class="score-label">Strong Areas</span>
+                            </div>
+                        </div>
+
+                        <div class="insight-card improvements-card">
+                            <div class="card-icon">
+                                <i class="fas fa-target"></i>
+                            </div>
+                            <h3>Development Areas</h3>
+                            <ul class="improvements-list" id="improvementsList">
+                                <!-- Populated by JavaScript -->
+                            </ul>
+                            <div class="improvement-score">
+                                <span class="score-value" id="improvementCount">5</span>
+                                <span class="score-label">Focus Areas</span>
+                            </div>
+                        </div>
+
+                        <div class="insight-card summary-card">
+                            <div class="card-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3>Overall Performance</h3>
+                            <div class="performance-metrics">
+                                <div class="metric">
+                                    <span class="metric-label">Average Score</span>
+                                    <span class="metric-value" id="avgScore">0.00</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-label">Excellence Rate</span>
+                                    <span class="metric-value" id="excellenceRate">0%</span>
+                                </div>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="overallProgress"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WOT Analysis Section -->
+    <section id="wot-analysis" class="wot-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">WOT Analysis</h2>
+                <p class="section-subtitle">Strengths, Weaknesses, Opportunities, and Threats</p>
+            </div>
+            <iframe src="wot-analysis.html" class="analysis-iframe" title="WOT Analysis"></iframe>
+        </div>
+    </section>
+
+    <!-- PO Attainment and Evaluations Section -->
+    <section id="po-attainment" class="po-attainment-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">PO Attainment and Evaluations</h2>
+                <p class="section-subtitle">Program Outcome Attainment and Evaluation Insights</p>
+            </div>
+            <iframe src="po-attainment.html" class="analysis-iframe" title="PO Attainment and Evaluations"></iframe>
+        </div>
+    </section>
+
+    <!-- Revolutionary Projects Section -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title"> Projects </h2>
+                <p class="section-subtitle">Innovative Solutions & Shokri Eyad</p>
+            </div>
+
+            <div class="projects-filter-bar">
+                <button class="filter-btn active" data-filter="all">
+                    <i class="fas fa-grip"></i>
+                    <span>All Projects</span>
+                </button>
+                <button class="filter-btn" data-filter="AI/ML">
+                    <i class="fas fa-brain"></i>
+                    <span>AI/ML</span>
+                </button>
+                <button class="filter-btn" data-filter="Robotics">
+                    <i class="fas fa-robot"></i>
+                    <span>Robotics/IoT</span>
+                </button>
+                <button class="filter-btn" data-filter="Electronics">
+                    <i class="fas fa-microchip"></i>
+                    <span>Electronics</span>
+                </button>
+                <button class="filter-btn" data-filter="Control Systems">
+                    <i class="fas fa-cogs"></i>
+                    <span>Control Systems</span>
+                </button>
+                <button class="filter-btn" data-filter="Digital">
+                    <i class="fas fa-calculator"></i>
+                    <span>Digital Design</span>
+                </button>
+            </div>
+
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Projects populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Advanced Skills Section -->
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Technical Excellence Matrix</h2>
+                <p class="section-subtitle">Advanced Proficiency Across Engineering Domains</p>
+            </div>
+
+            <div class="skills-dashboard">
+                <div class="skills-categories">
+                    <div class="skill-category">
+                        <div class="category-header">
+                            <i class="fas fa-brain"></i>
+                            <h3>AI & Machine Learning</h3>
+                        </div>
+                        <div class="skill-items">
+                            <div class="skill-item">
+                                <span class="skill-name">Python Programming</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-skill="95"></div>
+                                </div>
+                                <span class="skill-percentage">95%</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Machine Learning</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-skill="92"></div>
+                                </div>
+                                <span class="skill-percentage">92%</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Neural Networks</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-skill="88"></div>
+                                </div>
+                                <span class="skill-percentage">88%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <div class="category-header">
+                            <i class="fas fa-microchip"></i>
+                            <h3>Electronics & Hardware</h3>
+                        </div>
+                        <div class="skill-items">
+                            <div class="skill-item">
+                                <span class="skill-name">Circuit Design</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-skill="94"></div>
+                                </div>
+                                <span class="skill-percentage">94%</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">SPICE Simulation</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-skill="91"></div>
+                                </div>
+                                <span class="skill-percentage">91%</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">IC Design</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-skill="87"></div>
+                                </div>
+                                <span class="skill-percentage">87%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <div class="category-header">
+                            <i class="fas fa-cogs"></i>
+                            <h3>Control Systems</h3>
+                        </div>
+                        <div class="skill-items">
+                            <div class="skill-item">
+                                <span class="skill-name">MATLAB/Simulink</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-skill="96"></div>
+                                </div>
+                                <span class="skill-percentage">96%</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Control Theory</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-skill="89"></div>
+                                </div>
+                                <span class="skill-percentage">89%</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">System Modeling</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-skill="92"></div>
+                                </div>
+                                <span class="skill-percentage">92%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <div class="category-header">
+                            <i class="fas fa-robot"></i>
+                            <h3>Robotics & IoT</h3>
+                        </div>
+                        <div class="skill-items">
+                            <div class="skill-item">
+                                <span class="skill-name">Arduino/ESP32</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-skill="93"></div>
+                                </div>
+                                <span class="skill-percentage">93%</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Sensor Integration</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-skill="90"></div>
+                                </div>
+                                <span class="skill-percentage">90%</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Embedded Systems</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-skill="86"></div>
+                                </div>
+                                <span class="skill-percentage">86%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="technology-stack">
+                    <h3>Technology Stack</h3>
+                    <div class="tech-grid" id="techGrid">
+                        <!-- Technologies populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Let's Innovate Together</h2>
+                <p class="section-subtitle">Ready to collaborate on modern engineering solutions</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <i class="fas fa-envelope"></i>
+                        <h4>Email</h4>
+                        <p>engineering.excellence@innovation.com</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-phone"></i>
+                        <h4>Phone</h4>
+                        <p>+1 (555) 123-TECH</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fab fa-linkedin"></i>
+                        <h4>LinkedIn</h4>
+                        <p>linkedin.com/in/engineering-excellence</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fab fa-github"></i>
+                        <h4>GitHub</h4>
+                        <p>github.com/engineering-innovation</p>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contactForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Name</label>
+                            <input type="text" name="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" name="email" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Subject</label>
+                        <input type="text" name="subject" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Message</label>
+                        <textarea name="message" class="form-control" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full-width">
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Modal -->
+    <div class="modal hidden" id="projectModal">
+        <div class="modal-backdrop" id="modalBackdrop"></div>
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle"></h3>
+                <button class="modal-close" id="modalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-content" id="modalContent">
+                <!-- Content populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    
+</body>
+</html>                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3 id="modalTitle"></h3>
+            <p id="modalSubtitle"></p>
+            <p><strong>Category:</strong> <span id="modalCategory"></span></p>
+            <p><strong>Technologies:</strong> <span id="modalTechnologies"></span></p>
+            <p><strong>Type:</strong> <span id="modalType"></span></p>
+            <p><strong>Objective:</strong> <span id="modalObjective"></span></p>
+            <p><strong>Key Achievements:</strong> <span id="modalAchievements"></span></p>
+            <p><strong>Complexity:</strong> <span id="modalComplexity"></span></p>
+            <p><strong>Innovation Level:</strong> <span id="modalInnovation"></span></p>
+            <p><strong>Technical Depth:</strong> <span id="modalTechnicalDepth"></span></p>
+            <p><strong>Impact:</strong> <span id="modalImpact"></span></p>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTopBtn" title="Go to top">⬆️</button>
+
+</body>
+</html>

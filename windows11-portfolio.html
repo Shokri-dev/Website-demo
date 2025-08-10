@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows 11 Experience</title>
+    <link rel="stylesheet" href="windows11-style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="windows11-app.js" defer></script>
+    </style>
+</head>
+<body>
+
+
+    <!-- Boot Screen -->
+    <div id="bootScreen" class="boot-screen">
+        <div class="boot-logo">
+            <div class="logo-icon">🪟</div>
+            <h1>Engineering Portfolio</h1>
+            <div class="boot-text">Starting Windows 11...</div>
+        </div>
+        <div class="boot-progress">
+            <div class="boot-bar"></div>
+        </div>
+    </div>
+
+    <!-- Desktop -->
+    <div id="desktop" class="desktop hidden">
+        <!-- Desktop Icons (Only Projects and PLO_Analysis folders) -->
+        <div class="desktop-icons">
+            <div class="desktop-icon folder-icon" data-folder="AboutMe" data-x="50" data-y="50">
+                <div class="icon-image">👤</div>
+                <div class="icon-label">About Me</div>
+            </div>
+            <div class="desktop-icon folder-icon" data-folder="Projects" data-x="50" data-y="150">
+                <div class="icon-image">📂</div>
+                <div class="icon-label">Projects</div>
+            </div>
+            <div class="desktop-icon folder-icon special-folder" data-folder="PLO_Analysis" data-x="50" data-y="250">
+                <div class="icon-image">📊</div>
+                <div class="icon-label">PLO Analysis</div>
+            </div>
+            <div class="desktop-icon" data-program="modern-portfolio" data-x="50" data-y="350">
+                <div class="icon-image">⚙️</div>
+                <div class="icon-label">Modern E-Portfolio</div>
+            </div>
+            <div class="desktop-icon folder-icon" data-folder="Games" data-x="50" data-y="450">
+                <div class="icon-image">🎮</div>
+                <div class="icon-label">Games</div>
+            </div>
+            <div class="desktop-icon" data-program="wot-analysis" data-x="50" data-y="550">
+                <div class="icon-image">📝</div>
+                <div class="icon-label">WOT Analysis</div>
+            </div>
+            <div class="desktop-icon" data-program="po-attainment" data-x="50" data-y="650">
+                <div class="icon-image">📈</div>
+                <div class="icon-label">PO Attainment</div>
+            }
+        </div>
+
+        <!-- Windows Container -->
+        <div id="windowsContainer" class="windows-container"></div>
+
+        <!-- Taskbar -->
+        <div class="taskbar">
+            <div class="taskbar-left">
+                <div class="start-button" id="startButton">
+                    <span class="start-icon">🪟</span>
+                </div>
+                <div class="search-button" id="searchButton">
+                    <span class="search-icon">🔍</span>
+                </div>
+                <div class="task-view-button" title="Task view">
+                    <span>⊞</span>
+                </div>
+                <div class="file-explorer-button" id="fileExplorerButton" title="File Explorer">
+                    <span>📁</span>
+                </div>
+            </div>
+            <div class="taskbar-center" id="taskbarPrograms"></div>
+            <div class="taskbar-right">
+                <div class="system-tray">
+                    <div class="tray-icons">
+                        <span class="tray-icon">📶</span>
+                        <span class="tray-icon">🔊</span>
+                        <span class="tray-icon">🔋</span>
+                    </div>
+                    <div class="clock" id="clock">12:00</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Start Menu -->
+        <div class="start-menu hidden" id="startMenu">
+            <div class="start-menu-header">
+                <div class="user-profile">
+                    <div class="user-avatar">👨‍💻</div>
+                    <div class="user-name">Engineering Student</div>
+                </div>
+            </div>
+            <div class="start-menu-content">
+                <div class="pinned-section">
+                    <div class="section-title">Pinned</div>
+                    <div class="pinned-grid">
+                        <div class="pinned-item" data-folder="Projects">
+                            <span class="pinned-icon">📂</span>
+                            <span class="pinned-name">Projects</span>
+                        </div>
+                        <div class="pinned-item" data-folder="PLO_Analysis">
+                            <span class="pinned-icon">📊</span>
+                            <span class="pinned-name">PLO Analysis</span>
+                        </div>
+                        <div class="pinned-item" data-program="file-explorer">
+                            <span class="pinned-icon">📁</span>
+                            <span class="pinned-name">File Explorer</span>
+                        </div>
+                        <div class="pinned-item" data-program="about">
+                            <span class="pinned-icon">ℹ️</span>
+                            <span class="pinned-name">About</span>
+                        </div>
+                        <div class="pinned-item" data-program="settings">
+                            <span class="pinned-icon">⚙️</span>
+                            <span class="pinned-name">Settings</span>
+                        </div>
+                        <div class="pinned-item" data-folder="AboutMe">
+                            <span class="pinned-icon">👤</span>
+                            <span class="pinned-name">About Me</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="start-menu-footer">
+                    <div class="user-controls">
+                        <button class="control-btn" title="Power">⏻</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- File Explorer Window Template -->
+    <template id="explorerTemplate">
+        <div class="window explorer-window" data-type="explorer">
+            <div class="window-header">
+                <div class="window-title-area">
+                    <div class="window-icon">📁</div>
+                    <div class="window-title"></div>
+                </div>
+                <div class="window-controls">
+                    <button class="window-button minimize-button" title="Minimize">—</button>
+                    <button class="window-button maximize-button" title="Maximize">⧠</button>
+                    <button class="window-button close-button" title="Close">✕</button>
+                </div>
+            </div>
+            <div class="explorer-toolbar">
+                <div class="toolbar-section">
+                    <button class="toolbar-btn back-btn" title="Back">‹</button>
+                    <button class="toolbar-btn forward-btn" title="Forward">›</button>
+                    <button class="toolbar-btn up-btn" title="Up">↑</button>
+                </div>
+                <div class="address-bar">
+                    <span class="address-text"></span>
+                </div>
+                <div class="toolbar-section">
+                    <button class="toolbar-btn" title="View">👁</button>
+                    <button class="toolbar-btn" title="Sort">⇅</button>
+                </div>
+            </div>
+            <div class="window-content">
+                <div class="file-list"></div>
+            </div>
+            <div class="window-statusbar">
+                <div class="status-info">
+                    <span class="file-count">0 items</span>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- File Viewer Window Template -->
+    <template id="fileViewerTemplate">
+        <div class="window file-viewer-window" data-type="viewer">
+            <div class="window-header">
+                <div class="window-title-area">
+                    <div class="window-icon">📄</div>
+                    <div class="window-title"></div>
+                </div>
+                <div class="window-controls">
+                    <button class="window-button minimize-button" title="Minimize">—</button>
+                    <button class="window-button maximize-button" title="Maximize">⧠</button>
+                    <button class="window-button close-button" title="Close">✕</button>
+                </div>
+            </div>
+            <div class="window-content">
+                <div class="file-content"></div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Simple Window Template -->
+    <template id="windowTemplate">
+        <div class="window">
+            <div class="window-header">
+                <div class="window-title-area">
+                    <div class="window-icon">🪟</div>
+                    <div class="window-title"></div>
+                </div>
+                <div class="window-controls">
+                    <button class="window-button minimize-button" title="Minimize">—</button>
+                    <button class="window-button maximize-button" title="Maximize">⧠</button>
+                    <button class="window-button close-button" title="Close">✕</button>
+                </div>
+            </div>
+            <div class="window-content"></div>
+        </div>
+    </template>
+
+    <!-- Context Menu -->
+    <div class="context-menu hidden" id="contextMenu">
+        <div class="context-item" data-action="refresh">
+            <span class="context-icon">🔄</span>
+            <span class="context-text">Refresh</span>
+        </div>
+        <div class="context-separator"></div>
+        <div class="context-item" data-action="new-folder">
+            <span class="context-icon">📁</span>
+            <span class="context-text">New folder</span>
+        </div>
+        <div class="context-separator"></div>
+        <div class="context-item" data-action="background">
+            <span class="context-icon">🖼️</span>
+            <span class="context-text">Background</span>
+        </div>
+        <div class="context-separator"></div>
+    </body>
+</html>
